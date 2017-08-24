@@ -7,6 +7,11 @@ class Api::V1::ScoresController < ApplicationController
 
 	def create
 		Score.create(score_params)
+		render json: score_params
+	end
+
+	def destroy
+		Score.destroy(params[:id])
 	end
 
 
@@ -15,4 +20,5 @@ class Api::V1::ScoresController < ApplicationController
 	def score_params
 		params.require(:data).permit(:initials, :score)
 	end
+
 end
